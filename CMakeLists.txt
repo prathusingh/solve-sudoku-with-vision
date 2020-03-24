@@ -9,5 +9,5 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 include_directories(include)
 
 file(GLOB SOURCES "src/*.cpp")
-add_executable(solve-sudoku-with-vision ${SOURCES})
-target_link_libraries(solve-sudoku-with-vision ${OpenCV_LIBS})
+add_executable(SudokuSolver ${SOURCES})
+target_link_libraries(SudokuSolver ${OpenCV_LIBS})

@@ -11,6 +11,8 @@ public:
         // Create blank image of same size. it will hold the outerbox of same puzzle
         Mat outerBox = Mat(img.size(), CV_8UC1);
         // blur the image alittle. This smoothes out the noise and makes extracting the grid lines easier
+        GaussianBlur(img, img, Size(11, 11), 0);
+        imshow("sudoku", img);
     }
 };
 

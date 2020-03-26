@@ -13,6 +13,9 @@ public:
         // blur the image alittle. This smoothes out the noise and makes extracting the grid lines easier
         GaussianBlur(img, img, Size(11, 11), 0);
         imshow("sudoku", img);
+
+        adaptiveThreshold(img, outerBox, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY, 5, 2);
+        imshow("suoku", outerBox);
     }
 };
 

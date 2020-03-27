@@ -15,6 +15,13 @@ public:
         imshow("sudoku", img);
 
         adaptiveThreshold(img, outerBox, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY, 5, 2);
+
+        // change the image from black to white
+        bitwise_not(outerBox, outerBox);
+
+        // dilating any small cracks in case Thresholding created some disconneccted region
+        Mat kernel = (Mat_<uchar>(3, 3) << 0, 1, 0, 1, 1, 1, 0, 1, 0);
+        dilate(outerBox, outerBox, kernel);
         imshow("suoku", outerBox);
     }
 };

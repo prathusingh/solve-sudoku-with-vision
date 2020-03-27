@@ -5,6 +5,46 @@ using namespace cv;
 
 class SudokuSolver
 {
+    void detectBoundingBox(Mat &outerBox)
+    {
+        int count = 0;
+        int max = 1;
+        Point maxPt;
+
+        for (int y = 0; y < outerBox.size().height; y++)
+        {
+            uchar *row = outerBox.ptr(y);
+            for (int x = 0; x < outerBox.size().width; x++)
+            {
+                if (row[x] >= 128)
+                {
+
+                    int area = floodFill(outerBox, Point(x, y), CV_RGB(0, 0, 64));
+
+                    if (area > max)
+                    {
+                        maxPt = Point(x, y);
+                        max = area;
+                    }
+                }
+            }
+        }
+
+        floodFill(outerBox, maxPt, CV_RGB(255, 255, 255));
+
+        for (int y = 0; y < outerBox.size().height; y++)
+        {
+            uchar *row = outerBox.ptr(y);
+            for (int x = 0; x < outerBox.size().width; x++)
+            {
+                if (row[x] == 64 && x != maxPt.x && y != maxPt.y)
+                {
+                    int area = floodFill(outerBox, Point(x, y), CV_RGB(0, 0, 0));
+                }
+            }
+        }
+    }
+
 public:
     void preprocessImage(Mat &img)
     {
@@ -12,7 +52,6 @@ public:
         Mat outerBox = Mat(img.size(), CV_8UC1);
         // blur the image alittle. This smoothes out the noise and makes extracting the grid lines easier
         GaussianBlur(img, img, Size(11, 11), 0);
-        imshow("sudoku", img);
 
         adaptiveThreshold(img, outerBox, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY, 5, 2);
 
@@ -22,7 +61,12 @@ public:
         // dilating any small cracks in case Thresholding created some disconneccted region
         Mat kernel = (Mat_<uchar>(3, 3) << 0, 1, 0, 1, 1, 1, 0, 1, 0);
         dilate(outerBox, outerBox, kernel);
-        imshow("suoku", outerBox);
+
+        detectBoundingBox(outerBox);
+
+        //erode(outerBox, outerBox, kernel);
+
+        imshow("thresholded", outerBox);
     }
 };
 

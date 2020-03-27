@@ -11,6 +11,8 @@ class SudokuSolver
         int max = 1;
         Point maxPt;
 
+        // find the seed point first
+
         for (int y = 0; y < outerBox.size().height; y++)
         {
             uchar *row = outerBox.ptr(y);
@@ -29,9 +31,10 @@ class SudokuSolver
                 }
             }
         }
-
+        // flood with white color around the seed point that has maximum area
         floodFill(outerBox, maxPt, CV_RGB(255, 255, 255));
 
+        // flood with blackmeans effectively hiding the grey points
         for (int y = 0; y < outerBox.size().height; y++)
         {
             uchar *row = outerBox.ptr(y);
@@ -61,12 +64,10 @@ public:
         // dilating any small cracks in case Thresholding created some disconneccted region
         Mat kernel = (Mat_<uchar>(3, 3) << 0, 1, 0, 1, 1, 1, 0, 1, 0);
         dilate(outerBox, outerBox, kernel);
+        imshow("thresholded", outerBox);
 
         detectBoundingBox(outerBox);
-
-        //erode(outerBox, outerBox, kernel);
-
-        imshow("thresholded", outerBox);
+        erode(outerBox, outerBox, kernel);
     }
 };
 

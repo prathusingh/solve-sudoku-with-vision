@@ -1,2 +1,2 @@
-# qr-code-scanner
-A Computer vision project to implement qr code scanner
+# solve sudoku with vision
+A Computer vision hobby project to implement sudoku with computer vision

@@ -64,16 +64,14 @@ public:
         // dilating any small cracks in case Thresholding created some disconneccted region
         Mat kernel = (Mat_<uchar>(3, 3) << 0, 1, 0, 1, 1, 1, 0, 1, 0);
         dilate(outerBox, outerBox, kernel);
-        //imshow("thresholded", outerBox);
 
         detectBoundingBox(outerBox);
         erode(outerBox, outerBox, kernel);
 
-        //imshow("Thresholded", outerBox);
-
+        // detect lines in bounding box by Hough Transformation
         std::vector<Vec2f> lines;
         HoughLines(outerBox, lines, 1, CV_PI / 180, 200);
-        std::cout << lines.size() << std::endl;
+        imshow("outerBox", outerBox);
     }
 };
 
@@ -83,7 +81,7 @@ int main()
 
     SudokuSolver sudokuSolver;
     // load the image in grayscale mode
-    Mat sudoku = imread("../sudoku.jpg", 0);
+    Mat sudoku = imread("../data/sudoku.jpg", 0);
 
     sudokuSolver.preprocessImage(sudoku);
 

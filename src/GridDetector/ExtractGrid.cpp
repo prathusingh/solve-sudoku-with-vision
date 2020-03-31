@@ -13,6 +13,7 @@ class PreprocessImage
     }
 
 public:
+    // preprocess the image
     void preprocess()
     {
         outerBox = Mat(inputImage.size(), CV_8UC1);

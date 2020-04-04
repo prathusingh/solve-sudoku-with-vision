@@ -9,11 +9,11 @@ int main()
     std::cout << "Solve sudoku using vision" << std::endl;
 
     // load the image in grayscale mode
-    Mat sudoku = imread("../data/sudoku.jpg", 0);
+    Mat sudoku = imread("../src/data/sudoku.jpg", 0);
 
     Preprocessor preprocess;
     preprocess.preprocessImage(sudoku);
-
+    imshow("sudoku", sudoku);
     waitKey(0);
     return 0;
 }

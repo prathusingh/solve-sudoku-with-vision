@@ -7,6 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 include_directories(${PROJECT_SOURCE_DIR})
+include_directories("include")
+
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 add_executable(SudokuSolver ${SOURCES})
 target_link_libraries(SudokuSolver ${OpenCV_LIBS})

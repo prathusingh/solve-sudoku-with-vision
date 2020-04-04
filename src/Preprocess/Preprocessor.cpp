@@ -3,7 +3,7 @@
 
 using namespace cv;
 
-void Preprocessor::preprocessImage(Mat &img)
+void Preprocessor::preprocessImage(Mat img)
 {
     imshow("image", img);
 }

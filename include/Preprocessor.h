@@ -8,7 +8,7 @@ using namespace std;
 class Preprocessor
 {
 public:
-    void preprocessImage(Mat &img);
+    void preprocessImage(Mat img);
 };
 
 #endif

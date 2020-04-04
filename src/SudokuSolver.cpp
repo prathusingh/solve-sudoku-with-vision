@@ -11,8 +11,10 @@ int main()
     // load the image in grayscale mode
     Mat sudoku = imread("../src/data/sudoku.jpg", 0);
 
+    // preprocess the image
     Preprocessor preprocess;
     preprocess.preprocessImage(sudoku);
+
     waitKey(0);
     return 0;
 }

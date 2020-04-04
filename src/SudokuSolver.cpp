@@ -13,7 +13,6 @@ int main()
 
     Preprocessor preprocess;
     preprocess.preprocessImage(sudoku);
-    imshow("sudoku", sudoku);
     waitKey(0);
     return 0;
 }

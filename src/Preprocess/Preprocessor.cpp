@@ -5,5 +5,5 @@ using namespace cv;
 
 void Preprocessor::preprocessImage(Mat img)
 {
-    std::cout << "hola";
+    imshow("sudoku", img);
 }

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include "Preprocessor.h"
+#include "GridDetector.h"
 
 using namespace cv;
 
@@ -13,8 +14,13 @@ int main()
 
     // preprocess the image
     Preprocessor preprocess;
-    preprocess.preprocessImage(sudoku);
+    Mat outerBox = preprocess.preprocessImage(sudoku);
 
+    // extract grid
+    GridDetector gridDetector;
+    gridDetector.findBiggestBlob(outerBox);
+
+    imshow("thresholded", outerBox);
     waitKey(0);
     return 0;
 }

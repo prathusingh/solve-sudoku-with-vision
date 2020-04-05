@@ -1,6 +1,6 @@
 #include <opencv2/opencv.hpp>
-#include "Shared.h"
 #include "Preprocessor.h"
+#include "Shared.h"
 
 using namespace cv;
 
@@ -18,7 +18,6 @@ Mat Preprocessor::preprocessImage(Mat img)
     bitwise_not(outerBox, outerBox);
 
     // connect disconnected parts created during thresholding
-    Mat kernel = (Mat_<uchar>(3, 3) << 0, 1, 0, 1, 1, 1, 0, 1, 0);
     dilate(outerBox, outerBox, kernel);
 
     return outerBox;

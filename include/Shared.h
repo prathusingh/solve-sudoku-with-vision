@@ -2,4 +2,4 @@
 
 using namespace cv;
 
-extern const Mat kernel;
+extern Mat kernel;

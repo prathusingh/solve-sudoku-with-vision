@@ -24,9 +24,12 @@ int main()
     // extract grid
     GridDetector gridDetector;
     std::vector<Vec2f> lines;
-    gridDetector.findBiggestBlob(outerBox, lines);
+    gridDetector.findBiggestBlob(outerBox, &lines);
+    //imshow("box", outerBox);
+    //waitKey(7000); // 3 seconds
+    gridDetector.mergeRelatedLines(&lines, sudoku);
 
-    waitKey(3000); // 3 seconds
-
+    imshow("fused box", outerBox);
+    waitKey(7000); // 3 seconds
     return 0;
 }

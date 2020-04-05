@@ -4,7 +4,7 @@
 
 using namespace cv;
 
-void GridDetector::findBiggestBlob(Mat box, std::vector<Vec2f> lines)
+void GridDetector::findBiggestBlob(Mat box, std::vector<Vec2f> &lines)
 {
     int count = 0;
     int max = -1;

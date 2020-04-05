@@ -7,7 +7,7 @@ using namespace cv;
 class GridDetector
 {
 public:
-    void findBiggestBlob(Mat box, std::vector<Vec2f> lines);
+    void findBiggestBlob(Mat box, std::vector<Vec2f> &lines);
 };
 
 #endif

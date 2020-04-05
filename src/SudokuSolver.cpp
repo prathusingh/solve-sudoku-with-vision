@@ -26,8 +26,7 @@ int main()
     std::vector<Vec2f> lines;
     gridDetector.findBiggestBlob(outerBox, lines);
 
-    std::cout << lines.size();
+    waitKey(3000); // 3 seconds
 
-    waitKey(0);
     return 0;
 }

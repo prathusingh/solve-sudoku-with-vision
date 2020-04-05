@@ -23,9 +23,11 @@ int main()
 
     // extract grid
     GridDetector gridDetector;
-    gridDetector.findBiggestBlob(outerBox);
+    std::vector<Vec2f> lines;
+    gridDetector.findBiggestBlob(outerBox, lines);
 
-    imshow("thresholded", outerBox);
+    std::cout << lines.size();
+
     waitKey(0);
     return 0;
 }

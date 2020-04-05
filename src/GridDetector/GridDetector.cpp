@@ -4,7 +4,7 @@
 
 using namespace cv;
 
-void GridDetector::findBiggestBlob(Mat box)
+void GridDetector::findBiggestBlob(Mat box, std::vector<Vec2f> lines)
 {
     int count = 0;
     int max = -1;
@@ -47,4 +47,6 @@ void GridDetector::findBiggestBlob(Mat box)
         }
     }
     erode(box, box, kernel);
+
+    HoughLines(box, lines, 1, CV_PI / 180, 200);
 }

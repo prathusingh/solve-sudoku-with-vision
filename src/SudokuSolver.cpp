@@ -25,8 +25,6 @@ int main()
     GridDetector gridDetector;
     std::vector<Vec2f> lines;
     gridDetector.findBiggestBlob(outerBox, &lines);
-    //imshow("box", outerBox);
-    //waitKey(7000); // 3 seconds
     gridDetector.mergeRelatedLines(&lines, sudoku);
 
     imshow("fused box", outerBox);

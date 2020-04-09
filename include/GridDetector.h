@@ -9,7 +9,8 @@ class GridDetector
 {
 public:
     void mergeRelatedLines(vector<Vec2f> *lines, Mat img);
-    void findExtremeLines(vector<Vec2f> *lines, Mat img);
+    map<string, Vec2f> findExtremeLines(vector<Vec2f> *lines, Mat img);
+    void calculateIntersection(map<string, Vec2f> edges, Mat box);
 };
 
 #endif

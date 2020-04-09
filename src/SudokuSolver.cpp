@@ -29,11 +29,11 @@ int main()
 
     // extract grid
     GridDetector gridDetector;
-
     gridDetector.mergeRelatedLines(&lines, sudoku);
-    gridDetector.findExtremeLines(&lines, sudoku);
+    std::map<string, Vec2f> edges = gridDetector.findExtremeLines(&lines, sudoku);
+    gridDetector.calculateIntersection(edges, sudoku);
 
-    imshow("fused box", sudoku);
-    waitKey(7000); // 3 seconds
+    //imshow("fused box", sudoku);
+    //waitKey(7000); // 3 seconds
     return 0;
 }

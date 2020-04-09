@@ -33,7 +33,5 @@ int main()
     std::map<string, Vec2f> edges = gridDetector.findExtremeLines(&lines, sudoku);
     gridDetector.calculateIntersection(edges, sudoku);
 
-    //imshow("fused box", sudoku);
-    //waitKey(7000); // 3 seconds
     return 0;
 }

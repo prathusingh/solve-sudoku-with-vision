@@ -8,7 +8,7 @@ class Utils
 {
 
 public:
-    static void drawLine(Vec2f line, Mat &img, Scalar rgb = CV_RGB(0, 0, 255));
+    static void drawLine(Vec2f line, Mat &img, Scalar rgb);
 };
 
 #endif

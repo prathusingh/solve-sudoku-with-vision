@@ -8,7 +8,6 @@ using namespace std;
 class GridDetector
 {
 public:
-    void findBiggestBlob(Mat box, vector<Vec2f> *lines);
     void mergeRelatedLines(vector<Vec2f> *lines, Mat img);
     void findExtremeLines(vector<Vec2f> *lines, Mat img);
 };

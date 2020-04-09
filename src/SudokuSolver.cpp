@@ -3,6 +3,7 @@
 #include "Shared.h"
 #include "Preprocessor.h"
 #include "GridDetector.h"
+#include "BiggestBlobDetector.h"
 
 using namespace cv;
 
@@ -21,13 +22,18 @@ int main()
     Preprocessor preprocess;
     Mat outerBox = preprocess.preprocessImage(sudoku);
 
+    // detect biggest blob (bounding box)
+    std::vector<Vec2f> lines;
+    BiggestBlobDetector blobDetector;
+    blobDetector.findBiggestBlob(outerBox, &lines);
+
     // extract grid
     GridDetector gridDetector;
-    std::vector<Vec2f> lines;
-    gridDetector.findBiggestBlob(outerBox, &lines);
-    gridDetector.mergeRelatedLines(&lines, sudoku);
 
-    imshow("fused box", outerBox);
+    gridDetector.mergeRelatedLines(&lines, sudoku);
+    gridDetector.findExtremeLines(&lines, sudoku);
+
+    imshow("fused box", sudoku);
     waitKey(7000); // 3 seconds
     return 0;
 }

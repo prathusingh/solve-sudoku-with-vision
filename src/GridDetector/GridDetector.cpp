@@ -105,6 +105,7 @@ map<string, Vec2f> GridDetector ::findExtremeLines(vector<Vec2f> *lines, Mat img
 
     map<string, Vec2f> extremeLines;
     vector<Vec2f>::iterator current;
+    pair<string, Vec2f> edgesPair;
 
     for (current = lines->begin(); current != lines->end(); current++)
     {
@@ -125,13 +126,15 @@ map<string, Vec2f> GridDetector ::findExtremeLines(vector<Vec2f> *lines, Mat img
             if (rho < topEdge[0])
             {
                 topEdge = *current;
-                extremeLines.insert(pair("topEdge", topEdge));
+                pair<string, Vec2f> topEdgePair("topEdge", topEdge);
+                extremeLines.insert(topEdgePair);
             }
 
             if (rho > bottomEdge[0])
             {
                 bottomEdge = *current;
-                extremeLines.insert(pair("bottomEdge", bottomEdge));
+                pair<string, Vec2f> bottomEdgePair("bottomEdge", bottomEdge);
+                extremeLines.insert(bottomEdgePair);
             }
         } // if the line is nearly horizontal
         else if (theta < CV_PI * 10 / 180 || theta > CV_PI * 170 / 180)
@@ -139,13 +142,15 @@ map<string, Vec2f> GridDetector ::findExtremeLines(vector<Vec2f> *lines, Mat img
             if (xIntercept > rightXIntercept)
             {
                 rightEdge = *current;
-                extremeLines.insert(pair("rightEdge", rightEdge));
+                pair<string, Vec2f> rightEdgePair("rightEdge", rightEdge);
+                extremeLines.insert(rightEdgePair);
                 rightXIntercept = xIntercept;
             }
             else if (xIntercept <= leftXIntercept)
             {
                 leftEdge = *current;
-                extremeLines.insert(pair("leftEdge", leftEdge));
+                pair<string, Vec2f> leftEdgePair("leftEdge", leftEdge);
+                extremeLines.insert(leftEdgePair);
                 leftXIntercept = xIntercept;
             }
         }

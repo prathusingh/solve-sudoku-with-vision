@@ -11,7 +11,7 @@ Mat kernel;
 
 int main()
 {
-    std::cout << "Solve sudoku using vision" << std::endl;
+    std::cout << "Solve Sudoku using Computer Vision" << std::endl;
 
     // load the image in grayscale mode
     Mat sudoku = imread("../src/data/sudoku.jpg", 0);
